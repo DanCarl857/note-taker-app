@@ -6,7 +6,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "ios": "react-native run-ios",
-    "android": "cd android && ./gradlew clean && cd .. && react-native run-android"
+    "android": "cd android && ./gradlew clean && cd .. && react-native run-android",
+    "prepush": "npm run lint && npm run test",
+    "postinstall": "rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
@@ -17,6 +19,7 @@
     "@babel/core": "^7.4.3",
     "@babel/runtime": "^7.4.3",
     "babel-jest": "^24.7.1",
+    "husky": "^2.1.0",
     "jest": "^24.7.1",
     "metro-react-native-babel-preset": "^0.53.1",
     "react-test-renderer": "16.8.3"
